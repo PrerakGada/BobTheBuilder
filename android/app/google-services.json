@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "884108104346",
+    "project_id": "spike-codeshastra",
+    "storage_bucket": "spike-codeshastra.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:884108104346:android:ebdccbffbb16f7a740c523",
+        "android_client_info": {
+          "package_name": "com.example.spike_codeshastra"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "884108104346-9ilpj0kn7vlt4uo8fucu97dr9vmb1uv7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBcw9TbLWSgAyiqNWlr5torlDqmYL2F8MY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "884108104346-9ilpj0kn7vlt4uo8fucu97dr9vmb1uv7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

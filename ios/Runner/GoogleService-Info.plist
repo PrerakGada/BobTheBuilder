@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>884108104346-h840m18jhu4hfnu2d3n7f99u598reikv.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.884108104346-h840m18jhu4hfnu2d3n7f99u598reikv</string>
+	<key>API_KEY</key>
+	<string>AIzaSyCp-OsdU8qrxVBTnlHmE0CqByhH0xC73io</string>
+	<key>GCM_SENDER_ID</key>
+	<string>884108104346</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.spikeCodeshastra</string>
+	<key>PROJECT_ID</key>
+	<string>spike-codeshastra</string>
+	<key>STORAGE_BUCKET</key>
+	<string>spike-codeshastra.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:884108104346:ios:f42700837ca58e7a40c523</string>
+</dict>
+</plist>
