@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
 import 'package:spike_codeshastra/screens/splash_screen.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
 
 class ProjectLogin extends StatefulWidget {
   static const String id = 'worker_login';
@@ -116,7 +117,7 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                   // sharedPreferences.setInt('Login_status', 1);
                                   print(emailid);
                                   print(passwd);
-                                  Navigator.pushNamed(context, SignUp.id);
+                                  Navigator.pushReplacementNamed(context, pDashboard.id);
                                 }
                               } catch (e) {
                                 print(e);

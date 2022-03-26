@@ -15,6 +15,8 @@ class _SignUpState extends State<SignUp> {
   final _auth = FirebaseAuth.instance;
   late String emailid;
   late String passwd;
+  late String name;
+  late String phone;
 
   // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
   // final formKey = GlobalKey<FormState>();
@@ -33,12 +35,16 @@ class _SignUpState extends State<SignUp> {
         home: Scaffold(
           // key: _scaffoldKey,
             appBar: AppBar(
-              title: const Text('Sign Up'),
+              title: const Text('Sign Up',
+              style: TextStyle(
+                fontWeight: FontWeight.bold
+              ),
+              ),
             ),
             backgroundColor: const Color(0xFFffffff),
             body: Center(
               child: Container(
-                height: 350,
+                height: 460,
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Form(
                   // key: formKey, //key for form
@@ -48,6 +54,28 @@ class _SignUpState extends State<SignUp> {
                       const Text(
                         "Sign Up",
                         style: TextStyle(fontSize: 20, color: Colors.black),
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      TextField(
+                        keyboardType: TextInputType.emailAddress,
+                        // controller: email,
+                        onChanged: (value) {
+                          name = value;
+                        },
+                        // enableInteractiveSelection: false,
+                        decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.black, width: 1.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.black, width: 1.0),
+                          ),
+                          hintText: 'Enter your Name',
+                        ),
                       ),
                       const SizedBox(
                         height: 20,
@@ -68,7 +96,28 @@ class _SignUpState extends State<SignUp> {
                             borderSide:
                             BorderSide(color: Colors.black, width: 1.0),
                           ),
-                          hintText: 'Enter you Email',
+                          hintText: 'Enter your Email',
+                        ),
+                      ),
+                      const SizedBox(height: 25),
+                      TextField(
+                        maxLength: 10,
+                        keyboardType: TextInputType.number,
+                        // controller: email,
+                        onChanged: (value) {
+                          phone = value;
+                        },
+                        // enableInteractiveSelection: false,
+                        decoration: const InputDecoration(
+                          focusedBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.black, width: 1.0),
+                          ),
+                          enabledBorder: OutlineInputBorder(
+                            borderSide:
+                            BorderSide(color: Colors.black, width: 1.0),
+                          ),
+                          hintText: 'Enter your phone number',
                         ),
                       ),
                       const SizedBox(height: 25),
@@ -93,7 +142,6 @@ class _SignUpState extends State<SignUp> {
                           hintText: 'Enter you password',
                         ),
                       ),
-                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Material(
