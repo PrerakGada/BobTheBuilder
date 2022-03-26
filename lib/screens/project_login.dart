@@ -1,9 +1,16 @@
+// ignore_for_file: avoid_print
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+//import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
-import 'package:spike_codeshastra/screens/splash_screen.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
+import 'package:spike_codeshastra/screens/Contractor/c_dashboard.dart';
+
+import '../Services/service.dart';
+//import 'package:spike_codeshastra/screens/splash_screen.dart';
+
 
 class ProjectLogin extends StatefulWidget {
   static const String id = 'worker_login';
@@ -18,6 +25,9 @@ class _ProjectLoginState extends State<ProjectLogin> {
   final _auth = FirebaseAuth.instance;
   late String emailid;
   late String passwd;
+  late String role;
+  final DataService d1=DataService();
+  late DocumentSnapshot doc;
 
   @override
   Widget build(BuildContext context) {
@@ -111,13 +121,26 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                 await _auth.signInWithEmailAndPassword(
                                     email: emailid, password: passwd);
 
+                                // ignore: unnecessary_null_comparison
                                 if (user != null) {
+                                  doc=await d1.read(emailid);
                                   // final SharedPreferences sharedPreferences =
                                   //     await SharedPreferences.getInstance();
                                   // sharedPreferences.setInt('Login_status', 1);
                                   print(emailid);
                                   print(passwd);
-                                  Navigator.pushReplacementNamed(context, pDashboard.id);
+                                  role=doc.get('role');
+                                  if(role=='owner')
+                                  {
+                                    Navigator.pushReplacementNamed(context, pDashboard.id);
+                                  }
+                                  else if(role=='contractor')
+                                  {
+                                    Navigator.pushReplacementNamed(context, cDashboard.id);
+                                  }
+
+
+                                  //
                                 }
                               } catch (e) {
                                 print(e);

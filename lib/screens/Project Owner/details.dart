@@ -10,6 +10,34 @@ class Details extends StatefulWidget {
 class _DetailsState extends State<Details> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Column(
+        children: <Widget>[
+          SizedBox(height: 20,),
+          Text("Worker Details",
+            style: TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 22
+            ),
+          ),
+          SizedBox(
+              height: 200,
+              child: Card(
+                elevation: 10,
+                child: Row(
+                  children: [
+                    Text("Name:",
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold
+                    ),
+                    ),
+                  ],
+                ),
+              )),
+        ]
+
+      ),
+    );
   }
 }

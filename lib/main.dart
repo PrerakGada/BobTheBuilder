@@ -20,7 +20,7 @@ class Spike extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      initialRoute: cDashboard.id,
+      initialRoute: Loading.id,
       routes: {
         Loading.id: (context) => Loading(),
         SignUp.id: (context) => SignUp(),
