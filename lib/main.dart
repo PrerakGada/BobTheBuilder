@@ -1,8 +1,8 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-import 'package:spike_codeshastra/screens/login_screen.dart';
-import 'package:spike_codeshastra/screens/register_screen.dart';
-import 'package:spike_codeshastra/screens/welcome_screen.dart';
+import 'package:spike_codeshastra/screens/select_login.dart';
+import 'package:spike_codeshastra/screens/splash_screen.dart';
+import 'package:spike_codeshastra/screens/worker_login.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -14,12 +14,13 @@ class Spike extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: WelcomeScreen(),
-      initialRoute: WelcomeScreen.id,
+      debugShowCheckedModeBanner: false,
+      initialRoute: Loading.id,
       routes: {
-        WelcomeScreen.id: (context) => WelcomeScreen(),
-        LoginScreen.id: (context) => LoginScreen(),
-        RegisterScreen.id: (context) => RegisterScreen(),
+        Loading.id: (context) => Loading(),
+        SelectLogin.id: (context) => SelectLogin(),
+        WorkerLogin.id: (context) => WorkerLogin(),
+        //RegisterScreen.id: (context) => RegisterScreen(),
       },
     );
   }
