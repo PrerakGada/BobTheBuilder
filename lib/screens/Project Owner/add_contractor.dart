@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,6 +19,7 @@ class ExitConfirmationDialog extends StatefulWidget {
 }
 
 class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
+  final _auth = FirebaseAuth.instance;
   late String name;
   late String aadhar;
   late String email;
@@ -162,7 +164,21 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                     child: ElevatedButton(
                         child: Text('Submit'),
                         onPressed: () async {
+                          try {
+                            final newUser =
+                            await _auth.createUserWithEmailAndPassword(
+                                email: email, password: aadhar);
+                            _firestore.collection('users').doc(email).set({
+                              'name': name,
+                              'aadhar': aadhar,
+                              'phone': phone_no,
+                              'role': 'contractor',
+                            });
 
+                            Navigator.pop(context);
+                          } catch (e) {
+                            print(e);
+                          }
                         },
                         style: ElevatedButton.styleFrom(
                           // background color
