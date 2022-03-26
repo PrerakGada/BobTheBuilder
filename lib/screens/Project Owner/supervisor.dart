@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_project.dart';
 
-class Projects extends StatefulWidget {
+class SuperVisor extends StatefulWidget {
   static const String id = 'projects';
 
-  const Projects({Key? key}) : super(key: key);
+  const SuperVisor({Key? key}) : super(key: key);
 
   @override
-  State<Projects> createState() => _ProjectsState();
+  State<SuperVisor> createState() => _SuperVisorState();
 }
 
-class _ProjectsState extends State<Projects> {
+class _SuperVisorState extends State<SuperVisor> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(

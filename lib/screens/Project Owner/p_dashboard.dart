@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/contractor.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/projects.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/supervisor.dart';
 
 class pDashboard extends StatefulWidget {
   static const String id = 'Dashboard';
@@ -55,7 +57,6 @@ class MyHomePage extends StatelessWidget {
                 ),
               ), title: Text("Projects"),
               onTap: () {
-                print("shubh");
                 Navigator.of(context).push(
                   MaterialPageRoute(builder: (context) => Projects()),
                 );
@@ -64,13 +65,17 @@ class MyHomePage extends StatelessWidget {
             ListTile(
               leading: Icon(Icons.settings), title: Text("Contractor"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Contractor()),
+                );
               },
             ),
             ListTile(
               leading: Icon(Icons.contacts), title: Text("Supervisor"),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SuperVisor()),
+                );
               },
             ),
             ListTile(
