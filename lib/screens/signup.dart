@@ -1,6 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spike_codeshastra/screens/project_login.dart';
+
+final _firestore = FirebaseFirestore.instance;
 
 class SignUp extends StatefulWidget {
   static const String id = 'signup';
@@ -18,12 +22,6 @@ class _SignUpState extends State<SignUp> {
   late String name;
   late String phone;
 
-  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  // final formKey = GlobalKey<FormState>();
-  // final TextEditingController phoneNumber = TextEditingController();
-  // final TextEditingController email = TextEditingController();
-  // final TextEditingController password = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -33,12 +31,11 @@ class _SignUpState extends State<SignUp> {
           primarySwatch: Colors.blue,
         ),
         home: Scaffold(
-          // key: _scaffoldKey,
+            // key: _scaffoldKey,
             appBar: AppBar(
-              title: const Text('Sign Up',
-              style: TextStyle(
-                fontWeight: FontWeight.bold
-              ),
+              title: const Text(
+                'Sign Up',
+                style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
             backgroundColor: const Color(0xFFffffff),
@@ -59,8 +56,6 @@ class _SignUpState extends State<SignUp> {
                         height: 20,
                       ),
                       TextField(
-                        keyboardType: TextInputType.emailAddress,
-                        // controller: email,
                         onChanged: (value) {
                           name = value;
                         },
@@ -68,11 +63,11 @@ class _SignUpState extends State<SignUp> {
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           hintText: 'Enter your Name',
                         ),
@@ -82,7 +77,6 @@ class _SignUpState extends State<SignUp> {
                       ),
                       TextField(
                         keyboardType: TextInputType.emailAddress,
-                        // controller: email,
                         onChanged: (value) {
                           emailid = value;
                         },
@@ -90,11 +84,11 @@ class _SignUpState extends State<SignUp> {
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           hintText: 'Enter your Email',
                         ),
@@ -103,7 +97,6 @@ class _SignUpState extends State<SignUp> {
                       TextField(
                         maxLength: 10,
                         keyboardType: TextInputType.number,
-                        // controller: email,
                         onChanged: (value) {
                           phone = value;
                         },
@@ -111,35 +104,34 @@ class _SignUpState extends State<SignUp> {
                         decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           hintText: 'Enter your phone number',
                         ),
                       ),
                       const SizedBox(height: 25),
                       TextField(
-                        // controller: password,
                         onChanged: (value) {
                           passwd = value;
                         },
                         obscureText: true,
                         // enableInteractiveSelection: false,
                         decoration:
-                        //InputDecoration(labelText: "Enter your Number"),
-                        const InputDecoration(
+                            //InputDecoration(labelText: "Enter your Number"),
+                            const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
                           enabledBorder: OutlineInputBorder(
                             borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
+                                BorderSide(color: Colors.black, width: 1.0),
                           ),
-                          hintText: 'Enter you password',
+                          hintText: 'Enter your password',
                         ),
                       ),
                       Padding(
@@ -149,26 +141,18 @@ class _SignUpState extends State<SignUp> {
                           color: Colors.red[900],
                           borderRadius: BorderRadius.circular(30.0),
                           child: MaterialButton(
-                            // onPressed: () {
-                            //   //Navigator.pushNamed(context, Loading.id);
-                            //   print("Hello");
-                            // },
                             onPressed: () async {
                               try {
-                                print(emailid);
-                                print(passwd);
-
-                                final user =
-                                await _auth.signInWithEmailAndPassword(
-                                    email: emailid, password: passwd);
-
-                                if (user != null) {
-                                  // final SharedPreferences sharedPreferences =
-                                  //     await SharedPreferences.getInstance();
-                                  // sharedPreferences.setInt('Login_status', 1);
-                                  print(emailid);
-                                  print(passwd);
-                                  //Navigator.pushNamed(context, DashBoard.id);
+                                final newUser =
+                                    await _auth.createUserWithEmailAndPassword(
+                                        email: emailid, password: passwd);
+                                _firestore.collection('users').doc(emailid).set({
+                                  'name': name,
+                                  'phone': phone,
+                                  'role': 'owner'
+                                });
+                                if (newUser != null) {
+                                  Navigator.pushNamed(context, ProjectLogin.id);
                                 }
                               } catch (e) {
                                 print(e);
