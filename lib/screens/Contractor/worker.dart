@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:spike_codeshastra/screens/Project%20Owner/add_project.dart';
-import 'package:spike_codeshastra/screens/Project%20Owner/add_supervisor.dart';
+import 'package:spike_codeshastra/screens/Contractor/add_workers.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/add_contractor.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/worker_tab.dart';
 
-class SuperVisor extends StatefulWidget {
+class Worker extends StatefulWidget {
   static const String id = 'projects';
 
-  const SuperVisor({Key? key}) : super(key: key);
+  const Worker({Key? key}) : super(key: key);
 
   @override
-  State<SuperVisor> createState() => _SuperVisorState();
+  State<Worker> createState() => _WorkerState();
 }
 
-class _SuperVisorState extends State<SuperVisor> {
+class _WorkerState extends State<Worker> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -26,7 +27,7 @@ class _SuperVisorState extends State<SuperVisor> {
               Navigator.pop(context);
             },
           ),
-          title: Text("Supervisor"),
+          title: Text("Workers"),
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
@@ -36,7 +37,7 @@ class _SuperVisorState extends State<SuperVisor> {
               Center(
                   child: TextButton.icon(
                       onPressed: () {
-                        DialogSupervisor.exit(context);
+                        DialogWorker.exit(context);
                       },
                       icon: Icon(
                         Icons.add_circle,
@@ -49,7 +50,7 @@ class _SuperVisorState extends State<SuperVisor> {
               Padding(
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
-                  "Existing Supervisor",
+                  "Existing Workers",
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
               ),
@@ -60,15 +61,20 @@ class _SuperVisorState extends State<SuperVisor> {
                       height: 60,
                       child: Card(
                         elevation: 10,
-                        child: Padding(
-                          padding: const EdgeInsets.only(left: 8.0, right: 8.0,top: 8.0, bottom: 8.0,),
-                          child: Center(
-                            child: Text("Shubh Zatakia",
-                              style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 18
-                              ),
-                            ),
+                        child: ListTile(
+                          title: Text(
+                            "Shubh Zatakia",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w400, fontSize: 18),
+                          ),
+                          trailing: IconButton(
+                            onPressed: () {
+                              Navigator.of(context).push(
+                                MaterialPageRoute(
+                                    builder: (context) => Tabs()),
+                              );
+                            },
+                            icon: Icon(Icons.arrow_forward_ios_sharp),
                           ),
                         ),
                       ),

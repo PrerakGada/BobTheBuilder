@@ -18,10 +18,11 @@ class ExitConfirmationDialog extends StatefulWidget {
 }
 
 class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
-  late String p_name;
-  late String lat;
-  late String long;
-  late String c_name;
+  late String name;
+  late String aadhar;
+  late String email;
+  late String phone_no;
+  late String project_assigned;
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +35,7 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
 
   _buildChild(BuildContext context) => Container(
       width: 350,
-      height: 420,
+      height: 533,
       child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Padding(
@@ -43,7 +44,7 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
-                  child: Text("Project Details",
+                  child: Text("Supervisor Details",
                     style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -62,7 +63,7 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                 SizedBox(height: 10,),
                 TextField(
                   onChanged: (value) {
-                    p_name = value;
+                    name = value;
                   },
                   // enableInteractiveSelection: false,
                   decoration: const InputDecoration(
@@ -80,7 +81,7 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                 SizedBox(
                   height: 10,
                 ),
-                Text("Latitude and Longitude",
+                Text("AADHAR",
                   style: TextStyle(
                       fontWeight: FontWeight.w500
                   ),
@@ -88,59 +89,11 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                 SizedBox(
                   height: 15,
                 ),
-                Row(
-                  children: [
-                    Expanded(
-                      child: TextField(
-                        onChanged: (value) {
-                          lat = value;
-                        },
-                        // enableInteractiveSelection: false,
-                        decoration: const InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          hintText: 'LAT',
-                        ),
-                      ),
-                    ),
-                    SizedBox(width: 10),
-                    Expanded(
-                      child: TextField(
-                        onChanged: (value) {
-                          long = value;
-                        },
-                        // enableInteractiveSelection: false,
-                        decoration: const InputDecoration(
-                          focusedBorder: OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          enabledBorder: OutlineInputBorder(
-                            borderSide:
-                            BorderSide(color: Colors.black, width: 1.0),
-                          ),
-                          hintText: 'LONG',
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-                SizedBox(height: 10,),
-                Text("Contracter Assigned",
-                  style: TextStyle(
-                      fontWeight: FontWeight.w500
-                  ),
-                ),
-                SizedBox(height: 10,),
                 TextField(
+                  maxLength: 12,
+                  keyboardType: TextInputType.number,
                   onChanged: (value) {
-                    c_name = value;
+                    aadhar = value;
                   },
                   // enableInteractiveSelection: false,
                   decoration: const InputDecoration(
@@ -152,7 +105,55 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                       borderSide:
                       BorderSide(color: Colors.black, width: 1.0),
                     ),
-                    hintText: 'Enter Contractor Name',
+                    hintText: 'Enter your phone number',
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text("Email ID",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500
+                  ),
+                ),
+                SizedBox(height: 10,),
+                TextField(
+                  onChanged: (value) {
+                    email = value;
+                  },
+                  // enableInteractiveSelection: false,
+                  decoration: const InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.black, width: 1.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.black, width: 1.0),
+                    ),
+                    hintText: 'Enter Email',
+                  ),
+                ),
+                SizedBox(height: 10,),
+                Text("Project Assigned",
+                  style: TextStyle(
+                      fontWeight: FontWeight.w500
+                  ),
+                ),
+                SizedBox(height: 10,),
+                TextField(
+                  onChanged: (value) {
+                    project_assigned = value;
+                  },
+                  // enableInteractiveSelection: false,
+                  decoration: const InputDecoration(
+                    focusedBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.black, width: 1.0),
+                    ),
+                    enabledBorder: OutlineInputBorder(
+                      borderSide:
+                      BorderSide(color: Colors.black, width: 1.0),
+                    ),
+                    hintText: 'Enter Project Assigned',
                   ),
                 ),
                 Padding(

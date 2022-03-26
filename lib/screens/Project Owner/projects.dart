@@ -92,23 +92,6 @@ class _ProjectsState extends State<Projects> {
                                       ],
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          " Location : ",
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                        Text(
-                                          "Malad East",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
                                 ],
                               ),
                             ),

@@ -5,7 +5,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 final _firestore = FirebaseFirestore.instance;
 
 
-class DialogContractor {
+class DialogWorker {
   static exit(context) => showDialog(
       context: context, builder: (context) => ExitConfirmationDialog());
 }
@@ -20,8 +20,8 @@ class ExitConfirmationDialog extends StatefulWidget {
 class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
   late String name;
   late String aadhar;
-  late String email;
-  late String phone_no;
+  late String wages;
+  late String contractor_assigned;
   late String project_assigned;
 
   @override
@@ -39,13 +39,13 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
       child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Padding(
-            padding: const EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),  
             child: SingleChildScrollView(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Center(
-                    child: Text("Contractor Details",
+                    child: Text("Worker Details",
                       style: TextStyle(
                           color: Colors.black,
                           fontWeight: FontWeight.bold,
@@ -110,15 +110,16 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                     ),
                   ),
                   SizedBox(height: 10,),
-                  Text("Email ID",
+                  Text("Payroal",
                     style: TextStyle(
                         fontWeight: FontWeight.w500
                     ),
                   ),
                   SizedBox(height: 10,),
                   TextField(
+                    keyboardType: TextInputType.number,
                     onChanged: (value) {
-                      email = value;
+                      wages = value;
                     },
                     // enableInteractiveSelection: false,
                     decoration: const InputDecoration(
@@ -130,7 +131,7 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                         borderSide:
                         BorderSide(color: Colors.black, width: 1.0),
                       ),
-                      hintText: 'Enter Email',
+                      hintText: 'Enter the Payroal',
                     ),
                   ),
                   SizedBox(height: 10,),
