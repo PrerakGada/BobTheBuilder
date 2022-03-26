@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/projects.dart';
 
 class pDashboard extends StatefulWidget {
   static const String id = 'Dashboard';
@@ -38,30 +38,43 @@ class MyHomePage extends StatelessWidget {
           padding: EdgeInsets.zero,
           children: <Widget>[
             UserAccountsDrawerHeader(
-              accountName: Text("Abhishek Mishra"),
-              accountEmail: Text("abhishekm977@gmail.com"),
+              accountName: Text("Shubh Zatakia"),
+              accountEmail: Text("shubhzatakia111@gmail.com"),
               currentAccountPicture: CircleAvatar(
                 backgroundColor: Colors.orange,
                 child: Text(
-                  "A",
+                  "S",
                   style: TextStyle(fontSize: 40.0),
                 ),
               ),
             ),
             ListTile(
-              leading: Icon(Icons.home), title: Text("Home"),
+              leading: Image(
+                image: AssetImage(
+                  'assets/images/Logo.jpeg',
+                ),
+              ), title: Text("Projects"),
+              onTap: () {
+                print("shubh");
+                Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => Projects()),
+                );
+              },
+            ),
+            ListTile(
+              leading: Icon(Icons.settings), title: Text("Contractor"),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: Icon(Icons.settings), title: Text("Settings"),
+              leading: Icon(Icons.contacts), title: Text("Supervisor"),
               onTap: () {
                 Navigator.pop(context);
               },
             ),
             ListTile(
-              leading: Icon(Icons.contacts), title: Text("Contact Us"),
+              leading: Icon(Icons.contacts), title: Text("Task"),
               onTap: () {
                 Navigator.pop(context);
               },
