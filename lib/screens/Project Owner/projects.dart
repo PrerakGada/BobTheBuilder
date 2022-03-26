@@ -62,8 +62,8 @@ class _ProjectsState extends State<Projects> {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
-                            Padding(
-                              padding: const EdgeInsets.all(8.0),
+                            const Padding(
+                              padding: EdgeInsets.all(8.0),
                               child: Text(
                                 " Kanakia Levels",
                                 style: TextStyle(
@@ -78,7 +78,7 @@ class _ProjectsState extends State<Projects> {
                                   Expanded(
                                     child: Row(
                                       crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
+                                      children: const <Widget>[
                                         Text(
                                           " Contractor : ",
                                           style: TextStyle(fontSize: 14),
@@ -92,23 +92,23 @@ class _ProjectsState extends State<Projects> {
                                       ],
                                     ),
                                   ),
-                                  Expanded(
-                                    child: Row(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                      children: <Widget>[
-                                        Text(
-                                          " Location : ",
-                                          style: TextStyle(fontSize: 14),
-                                        ),
-                                        Text(
-                                          "Malad East",
-                                          style: TextStyle(
-                                              fontWeight: FontWeight.bold,
-                                              fontSize: 14),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
+                                  // Expanded(
+                                  //   child: Row(
+                                  //     crossAxisAlignment: CrossAxisAlignment.start,
+                                  //     children: <Widget>[
+                                  //       Text(
+                                  //         " Location : ",
+                                  //         style: TextStyle(fontSize: 14),
+                                  //       ),
+                                  //       Text(
+                                  //         "Malad East",
+                                  //         style: TextStyle(
+                                  //             fontWeight: FontWeight.bold,
+                                  //             fontSize: 14),
+                                  //       ),
+                                  //     ],
+                                  //   ),
+                                  // ),
                                 ],
                               ),
                             ),
