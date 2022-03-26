@@ -1,16 +1,18 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spike_codeshastra/screens/signup.dart';
 
-class WorkerLogin extends StatefulWidget {
+class ProjectLogin extends StatefulWidget {
   static const String id = 'worker_login';
-  const WorkerLogin({Key? key}) : super(key: key);
+
+  const ProjectLogin({Key? key}) : super(key: key);
+
   @override
-  State<WorkerLogin> createState() => _WorkerLoginState();
+  State<ProjectLogin> createState() => _ProjectLoginState();
 }
 
-class _WorkerLoginState extends State<WorkerLogin> {
-
+class _ProjectLoginState extends State<ProjectLogin> {
   final _auth = FirebaseAuth.instance;
   late String emailid;
   late String passwd;
@@ -37,7 +39,7 @@ class _WorkerLoginState extends State<WorkerLogin> {
             backgroundColor: const Color(0xFFffffff),
             body: Center(
               child: Container(
-                height: 300,
+                height: 350,
                 padding: const EdgeInsets.only(left: 20, right: 20),
                 child: Form(
                   // key: formKey, //key for form
@@ -45,11 +47,11 @@ class _WorkerLoginState extends State<WorkerLogin> {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const Text(
-                        "Worker",
+                        "Log In",
                         style: TextStyle(fontSize: 20, color: Colors.black),
                       ),
                       const SizedBox(
-                        height: 8,
+                        height: 20,
                       ),
                       TextField(
                         keyboardType: TextInputType.emailAddress,
@@ -58,8 +60,7 @@ class _WorkerLoginState extends State<WorkerLogin> {
                           emailid = value;
                         },
                         // enableInteractiveSelection: false,
-                        decoration:
-                        const InputDecoration(
+                        decoration: const InputDecoration(
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                             BorderSide(color: Colors.black, width: 1.0),
@@ -93,7 +94,7 @@ class _WorkerLoginState extends State<WorkerLogin> {
                           hintText: 'Enter you password',
                         ),
                       ),
-                      const SizedBox(height: 25),
+                      const SizedBox(height: 20),
                       Padding(
                         padding: const EdgeInsets.symmetric(vertical: 16.0),
                         child: Material(
@@ -110,7 +111,8 @@ class _WorkerLoginState extends State<WorkerLogin> {
                                 print(emailid);
                                 print(passwd);
 
-                                final user = await _auth.signInWithEmailAndPassword(
+                                final user =
+                                await _auth.signInWithEmailAndPassword(
                                     email: emailid, password: passwd);
 
                                 if (user != null) {
@@ -133,6 +135,28 @@ class _WorkerLoginState extends State<WorkerLogin> {
                             ),
                           ),
                         ),
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SizedBox(width: 70,),
+                          Align(
+                              alignment: Alignment.centerRight,
+                              child: Text("New Project Owner?")),
+                          Align(
+                            alignment: Alignment.centerLeft,
+                            child: TextButton(
+                              onPressed: () {
+                                Navigator.pushNamed(context,SignUp.id);
+                              },
+                              child: Text(
+                                "Sign Up",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
                     ],
                   ),

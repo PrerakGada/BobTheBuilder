@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:spike_codeshastra/screens/worker_login.dart';
+import 'package:spike_codeshastra/screens/contractor_login.dart';
+import 'package:spike_codeshastra/screens/project_login.dart';
 
 class SelectLogin extends StatefulWidget {
   static const String id = 'select_login';
@@ -16,7 +17,7 @@ class _SelectLoginState extends State<SelectLogin> {
       debugShowCheckedModeBanner: false,
       title: 'Bob the Builder',
       theme: ThemeData(
-        primarySwatch: Colors.indigo,
+        primarySwatch: Colors.blue,
       ),
       home: Scaffold(
         appBar: AppBar(
@@ -24,8 +25,8 @@ class _SelectLoginState extends State<SelectLogin> {
         ),
         body: Center(
           child: Container(
-            height: 300,
-            width: 300,
+            height: 260,
+            width: 260,
             child: Column(
               children: <Widget>[
                 const Text("Select Login",
@@ -40,46 +41,7 @@ class _SelectLoginState extends State<SelectLogin> {
                   children: [
                     GestureDetector(
                       onTap: () {
-                        Navigator.pushNamed(context,WorkerLogin.id);
-                      },
-                      child: Card(
-                          elevation: 10,
-                          child: SizedBox(
-                            width: 110,
-                            height: 110,
-                            child: Padding(
-                              padding: const EdgeInsets.all(8.0),
-                              child: Column(
-                                children: [
-                                  CircleAvatar(
-                                    radius: 35,
-                                    backgroundColor: Colors.white,
-                                    backgroundImage: NetworkImage(
-                                        "https://www.teachusedumation.com/images/youtubelogo.png"), //NetworkImage
-                                  ),
-                                  SizedBox(
-                                    height: 5,
-                                  ), //SizedBox
-                                  Text(
-                                    "Worker",
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.bold,
-                                    ),
-                                  ),
-                                ], //CirclAvatar
-                              ),
-                            ),
-                          )),
-                    ),
-                    SizedBox(
-                      width: 40,
-                    ),
-                    GestureDetector(
-                      onTap: () {
-                       /* Navigator.of(context).push(
-                          MaterialPageRoute(
-                              builder: (context) => ParentLoginPage()),
-                        );*/
+                        Navigator.pushNamed(context,ContractorLogin.id);
                       },
                       child: Card(
                           elevation: 10,
@@ -110,45 +72,43 @@ class _SelectLoginState extends State<SelectLogin> {
                             ),
                           )),
                     ),
+                    SizedBox(
+                      width: 20,
+                    ),
+                    GestureDetector(
+                      onTap: () {
+                        Navigator.pushNamed(context,ProjectLogin.id);
+                      },
+                      child: Card(
+                          elevation: 10,
+                          child: SizedBox(
+                            width: 110,
+                            height: 110,
+                            child: Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                children: [
+                                  CircleAvatar(
+                                    radius: 35,
+                                    backgroundColor: Colors.white,
+                                    backgroundImage: NetworkImage(
+                                        "https://www.teachusedumation.com/images/youtubelogo.png"), //NetworkImage
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ), //SizedBox
+                                  Text(
+                                    "Project Owner",
+                                    style: TextStyle(
+                                      fontWeight: FontWeight.bold,
+                                    ),
+                                  ),
+                                ], //CirclAvatar
+                              ),
+                            ),
+                          )),
+                    ),
                   ],
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                GestureDetector(
-                  onTap: () {
-                    /*Navigator.of(context).push(MaterialPageRoute(
-                          builder: (context) => StudentLoginPage(),
-                        ));*/
-                  },
-                  child: Card(
-                      elevation: 10,
-                      child: SizedBox(
-                        width: 110,
-                        height: 110,
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: Column(
-                            children: [
-                              CircleAvatar(
-                                radius: 35,
-                                backgroundColor: Colors.white,
-                                backgroundImage: NetworkImage(
-                                    "https://www.teachusedumation.com/images/youtubelogo.png"), //NetworkImage
-                              ),
-                              SizedBox(
-                                height: 5,
-                              ), //SizedBox
-                              Text(
-                                "Project Owner",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                ),
-                              ),
-                            ], //CirclAvatar
-                          ),
-                        ),
-                      )),
                 ),
               ],
             ),
