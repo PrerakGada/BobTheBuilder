@@ -1,6 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.spike_codeshastra">
    <application
+       android:usesCleartextTraffic="true"
         android:label="spike_codeshastra"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">

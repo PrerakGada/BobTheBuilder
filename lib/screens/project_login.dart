@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
+import 'package:spike_codeshastra/screens/splash_screen.dart';
 
 class ProjectLogin extends StatefulWidget {
   static const String id = 'worker_login';
@@ -16,12 +17,6 @@ class _ProjectLoginState extends State<ProjectLogin> {
   final _auth = FirebaseAuth.instance;
   late String emailid;
   late String passwd;
-
-  // final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
-  // final formKey = GlobalKey<FormState>();
-  // final TextEditingController phoneNumber = TextEditingController();
-  // final TextEditingController email = TextEditingController();
-  // final TextEditingController password = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -121,7 +116,7 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                   // sharedPreferences.setInt('Login_status', 1);
                                   print(emailid);
                                   print(passwd);
-                                  //Navigator.pushNamed(context, DashBoard.id);
+                                  Navigator.pushNamed(context, SignUp.id);
                                 }
                               } catch (e) {
                                 print(e);
@@ -138,8 +133,8 @@ class _ProjectLoginState extends State<ProjectLogin> {
                       ),
                       Row(
                         children: <Widget>[
-                          SizedBox(width: 70,),
-                          Align(
+                          const SizedBox(width: 70,),
+                          const Align(
                               alignment: Alignment.centerRight,
                               child: Text("New Project Owner?")),
                           Align(
@@ -148,7 +143,7 @@ class _ProjectLoginState extends State<ProjectLogin> {
                               onPressed: () {
                                 Navigator.pushNamed(context,SignUp.id);
                               },
-                              child: Text(
+                              child: const Text(
                                 "Sign Up",
                                 style: TextStyle(
                                   fontWeight: FontWeight.bold,

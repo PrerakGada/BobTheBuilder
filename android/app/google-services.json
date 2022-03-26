@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "884108104346",
-    "project_id": "spike-codeshastra",
-    "storage_bucket": "spike-codeshastra.appspot.com"
+    "project_number": "940637692821",
+    "project_id": "construct-a72e7",
+    "storage_bucket": "construct-a72e7.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:884108104346:android:ebdccbffbb16f7a740c523",
+        "mobilesdk_app_id": "1:940637692821:android:f6ffc1ab192ad3c7894c9c",
         "android_client_info": {
           "package_name": "com.example.spike_codeshastra"
         }
       },
       "oauth_client": [
         {
-          "client_id": "884108104346-9ilpj0kn7vlt4uo8fucu97dr9vmb1uv7.apps.googleusercontent.com",
+          "client_id": "940637692821-jthm1m493mg0sdk18c7d80hr4i7dqs6v.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBcw9TbLWSgAyiqNWlr5torlDqmYL2F8MY"
+          "current_key": "AIzaSyBNdcW0LE49KMTNlqwHTJ_mAnCA2We9jUg"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "884108104346-9ilpj0kn7vlt4uo8fucu97dr9vmb1uv7.apps.googleusercontent.com",
+              "client_id": "940637692821-jthm1m493mg0sdk18c7d80hr4i7dqs6v.apps.googleusercontent.com",
               "client_type": 3
             }
           ]
