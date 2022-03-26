@@ -27,10 +27,10 @@ class Extradetails
   }
   TextStyle ptext(fsize)
   {
-    return GoogleFonts.lora(fontSize: fsize); 
+    return GoogleFonts.lora(fontSize: fsize);
   }
   TextStyle ptextcolor(fsize,color12)
   {
-    return GoogleFonts.lora(fontSize: fsize,color: Color(color12)); 
+    return GoogleFonts.lora(fontSize: fsize,color: Color(color12));
   }
 }
