@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -18,10 +19,13 @@ class ExitConfirmationDialog extends StatefulWidget {
 }
 
 class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
+
+  // final _auth = FirebaseAuth.instance;
+
   late String name;
   late String aadhar;
   late String wages;
-  late String contractor_assigned;
+  // late String contractor_assigned;
   late String project_assigned;
 
   @override
@@ -164,7 +168,18 @@ class _ExitConfirmationDialogState extends State<ExitConfirmationDialog> {
                       child: ElevatedButton(
                           child: Text('Submit'),
                           onPressed: () async {
+                            try {
+                              _firestore.collection('workers').doc(name).set({
+                                'name': name,
+                                'aadhar': aadhar,
+                                'pay': wages,
+                                'project': project_assigned,
+                              });
 
+                              Navigator.pop(context);
+                            } catch (e) {
+                              print(e);
+                            }
                           },
                           style: ElevatedButton.styleFrom(
                             // background color

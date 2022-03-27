@@ -1,7 +1,10 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Contractor/add_workers.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_contractor.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/worker_tab.dart';
+
+final _firestore = FirebaseFirestore.instance;
 
 class Worker extends StatefulWidget {
   static const String id = 'projects';
@@ -54,35 +57,68 @@ class _WorkerState extends State<Worker> {
                   style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
                 ),
               ),
-              Expanded(
-                child: ListView(
-                  children: <Widget>[
-                    SizedBox(
-                      height: 60,
-                      child: Card(
-                        elevation: 10,
-                        child: ListTile(
-                          title: Text(
-                            "Shubh Zatakia",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w400, fontSize: 18),
-                          ),
-                          trailing: IconButton(
-                            onPressed: () {
-                              Navigator.of(context).push(
-                                MaterialPageRoute(
-                                    builder: (context) => Tabs()),
-                              );
-                            },
-                            icon: Icon(Icons.arrow_forward_ios_sharp),
-                          ),
+              StreamBuilder<QuerySnapshot>(
+                  stream: _firestore.collection('workers').snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
                         ),
+                      );
+                    }
+                    final contractors = snapshot.data!.docs;
+                    List<WorkerCard> contractorCards = [];
+                    for (var contractor in contractors) {
+                      final name = contractor.get('name');
+
+                      final contractorCard = WorkerCard(
+                        name: name,
+                      );
+
+                      contractorCards.add(contractorCard);
+                    }
+                    return SizedBox(
+                      height: 600,
+                      child: ListView(
+                        children: contractorCards,
                       ),
-                    ),
-                  ],
-                ),
-              ),
+                    );
+                  }),
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+class WorkerCard extends StatelessWidget {
+  const WorkerCard({
+    Key? key,
+    required this.name,
+  }) : super(key: key);
+
+  final String name;
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 60,
+      child: Card(
+        elevation: 10,
+        child: ListTile(
+          title: Text(
+            name,
+            style: TextStyle(fontWeight: FontWeight.w400, fontSize: 18),
+          ),
+          trailing: IconButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(builder: (context) => Tabs()),
+              );
+            },
+            icon: Icon(Icons.arrow_forward_ios_sharp),
           ),
         ),
       ),
