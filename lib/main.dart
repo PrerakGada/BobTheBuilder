@@ -8,6 +8,7 @@ import 'package:spike_codeshastra/screens/project_login.dart';
 import 'package:spike_codeshastra/screens/select_login.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
 import 'package:spike_codeshastra/screens/splash_screen.dart';
+import 'package:spike_codeshastra/screens/Supervisor/s_dashboard.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -28,6 +29,7 @@ class Spike extends StatelessWidget {
         pDashboard.id: (context) => pDashboard(),
         Projects.id: (context) => Projects(),
         cDashboard.id: (context) => cDashboard(),
+        sDashboard.id: (context) => sDashboard(),
       },
     );
   }

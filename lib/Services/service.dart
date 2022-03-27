@@ -23,7 +23,41 @@ class DataService
     return doc;
   }
 
+void deletework(String name) async
+{
+  try
+      {
+        firestore.collection('workers').doc(name).delete();
+      }
+      catch(e)
+  {
+    print(e);
+  }
+}
 
+  void deletecontract(String email) async
+  {
+    try
+    {
+      firestore.collection('users').doc(email).delete();
+    }
+    catch(e)
+    {
+      print(e);
+    }
+  }
+
+  void deleteproj(String pname) async
+  {
+    try
+    {
+      firestore.collection('projects').doc(pname).delete();
+    }
+    catch(e)
+    {
+      print(e);
+    }
+  }
 
 
 }

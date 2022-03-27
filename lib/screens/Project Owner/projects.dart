@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_project.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/delete_project.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -39,18 +40,42 @@ class _ProjectsState extends State<Projects> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
-                    child: TextButton.icon(
-                        onPressed: () {
-                          DialogHelper.exit(context);
-                        },
-                        icon: Icon(
-                          Icons.add_circle,
-                          size: 26,
-                        ),
-                        label: Text(
-                          "Add",
-                          style: TextStyle(fontSize: 18),
-                        ))),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextButton.icon(
+                            onPressed: () {
+                              DialogHelper.exit(context);
+                            },
+                            icon: Icon(
+                              Icons.add_circle,
+                              size: 26,
+                            ),
+                            label: Text(
+                              "Add",
+                              style: TextStyle(fontSize: 18),
+                            )),
+                      ),
+                      Expanded(
+                        child: TextButton.icon(
+                            onPressed: () {
+                              DialogProjectSub.exit(context);
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              size: 26,
+                              color: Colors.red[900],
+                            ),
+                            label: Text(
+                              "Delete",
+                              style: TextStyle(fontSize: 18,
+                                  color: Colors.red[900]
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

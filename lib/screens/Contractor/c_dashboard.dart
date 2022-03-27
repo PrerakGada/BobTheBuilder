@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:spike_codeshastra/screens/Contractor/safetyscreen.dart';
 import 'package:spike_codeshastra/screens/Contractor/worker.dart';
 import 'package:spike_codeshastra/screens/project_login.dart';
 
@@ -104,7 +105,9 @@ class cDashboardState extends State<cDashboard> {
                         padding: const EdgeInsets.all(8.0),
                         child: GestureDetector(
                           onTap: () {
-                            //Navigator.pushNamed(context, WaterIrrigation.id);
+                            Navigator.of(context).push(
+                              MaterialPageRoute(builder: (context) => Safetyscreen()),
+                            );
                           },
                           child: Card(
                               elevation: 40,

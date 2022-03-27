@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Contractor/add_workers.dart';
+import 'package:spike_codeshastra/screens/Contractor/delete_worker.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_contractor.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/worker_tab.dart';
 
@@ -43,18 +44,41 @@ class _WorkerState extends State<Worker> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Center(
-                    child: TextButton.icon(
-                        onPressed: () {
-                          DialogWorker.exit(context);
-                        },
-                        icon: Icon(
-                          Icons.add_circle,
-                          size: 26,
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: TextButton.icon(
+                              onPressed: () {
+                                DialogWorker.exit(context);
+                              },
+                              icon: Icon(
+                                Icons.add_circle,
+                                size: 26,
+                              ),
+                              label: Text(
+                                "Add",
+                                style: TextStyle(fontSize: 18),
+                              )),
                         ),
-                        label: Text(
-                          "Add",
-                          style: TextStyle(fontSize: 18),
-                        ))),
+                        Expanded(
+                          child: TextButton.icon( 
+                              onPressed: () {
+                                DialogWorkerSub.exit(context);
+                              },
+                              icon: Icon(
+                                Icons.delete,
+                                size: 26,
+                                color: Colors.red[900],
+                              ),
+                              label: Text(
+                                "Delete",
+                                style: TextStyle(fontSize: 18,
+                                color: Colors.red[900]
+                                ),
+                              )),
+                        ),
+                      ],
+                    )),
                 Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Text(

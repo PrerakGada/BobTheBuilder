@@ -8,6 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
 import 'package:spike_codeshastra/screens/Contractor/c_dashboard.dart';
+import 'package:spike_codeshastra/screens/Supervisor/s_dashboard.dart';
 
 import '../Services/service.dart';
 //import 'package:spike_codeshastra/screens/splash_screen.dart';
@@ -145,6 +146,13 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                     sharedPreferences.setInt('Login_status', 1);
                                     Navigator.pushReplacementNamed(context, cDashboard.id);
                                   }
+                                  else if(role=='supervisor')
+                                    {
+                                      final SharedPreferences sharedPreferences =
+                                      await SharedPreferences.getInstance();
+                                      sharedPreferences.setInt('Login_status', 3);
+                                      Navigator.pushReplacementNamed(context, sDashboard.id);
+                                    }
 
 
                                   //

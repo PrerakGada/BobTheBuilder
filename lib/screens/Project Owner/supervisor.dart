@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_project.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/add_supervisor.dart';
+import 'package:spike_codeshastra/screens/Project%20Owner/delete_supervisor.dart';
 
 final _firestore = FirebaseFirestore.instance;
 
@@ -35,63 +36,89 @@ class _SuperVisorState extends State<SuperVisor> {
         ),
         body: Padding(
           padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                  child: TextButton.icon(
-                      onPressed: () {
-                        DialogSupervisor.exit(context);
-                      },
-                      icon: Icon(
-                        Icons.add_circle,
-                        size: 26,
+          child: SingleChildScrollView(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: TextButton.icon(
+                            onPressed: () {
+                              DialogSupervisor.exit(context);
+                            },
+                            icon: Icon(
+                              Icons.add_circle,
+                              size: 26,
+                            ),
+                            label: Text(
+                              "Add",
+                              style: TextStyle(fontSize: 18),
+                            )),
                       ),
-                      label: Text(
-                        "Add",
-                        style: TextStyle(fontSize: 18),
-                      ))),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Existing Supervisor",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                      Expanded(
+                        child: TextButton.icon(
+                            onPressed: () {
+                              DialogSupervisorSub.exit(context);
+                            },
+                            icon: Icon(
+                              Icons.delete,
+                              size: 26,
+                              color: Colors.red[900],
+                            ),
+                            label: Text(
+                              "Delete",
+                              style: TextStyle(fontSize: 18,
+                                  color: Colors.red[900]
+                              ),
+                            )),
+                      ),
+                    ],
+                  ),
                 ),
-              ),
-              StreamBuilder<QuerySnapshot>(
-                stream: _firestore.collection('users').snapshots(),
-                builder: (context, snapshot) {
-                  if (!snapshot.hasData) {
-                    return const Center(
-                      child: CircularProgressIndicator(
-                        backgroundColor: Colors.lightBlueAccent,
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Existing Supervisor",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
+                ),
+                StreamBuilder<QuerySnapshot>(
+                  stream: _firestore.collection('users').snapshots(),
+                  builder: (context, snapshot) {
+                    if (!snapshot.hasData) {
+                      return const Center(
+                        child: CircularProgressIndicator(
+                          backgroundColor: Colors.lightBlueAccent,
+                        ),
+                      );
+                    }
+                    final contractors = snapshot.data!.docs;
+                    List<SupervisorCard> contractorCards = [];
+                    for (var contractor in contractors) {
+                      final role = contractor.get('role');
+                      if (role == "supervisor") {
+                        final name = contractor.get('name');
+
+                        final contractorCard = SupervisorCard(
+                          name: name,
+                        );
+
+                        contractorCards.add(contractorCard);
+                      }
+                    }
+
+                    return SizedBox(
+                      height: 600,
+                      child: ListView(
+                        children: contractorCards,
                       ),
                     );
                   }
-                  final contractors = snapshot.data!.docs;
-                  List<SupervisorCard> contractorCards = [];
-                  for (var contractor in contractors) {
-                    final role = contractor.get('role');
-                    if (role == "supervisor") {
-                      final name = contractor.get('name');
-
-                      final contractorCard = SupervisorCard(
-                        name: name,
-                      );
-
-                      contractorCards.add(contractorCard);
-                    }
-                  }
-
-                  return SizedBox(
-                    height: 600,
-                    child: ListView(
-                      children: contractorCards,
-                    ),
-                  );
-                }
-              ),
-            ],
+                ),
+              ],
+            ),
           ),
         ),
       ),

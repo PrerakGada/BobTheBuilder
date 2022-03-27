@@ -8,6 +8,7 @@ import 'package:spike_codeshastra/screens/project_login.dart';
 import 'dart:async';
 import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
 import 'package:spike_codeshastra/screens/Contractor/c_dashboard.dart';
+import 'package:spike_codeshastra/screens/Supervisor/s_dashboard.dart';
 
 
 import 'package:spike_codeshastra/screens/select_login.dart';
@@ -43,7 +44,9 @@ class _LoadingState extends State<Loading> {
     log == 0 ?
     Navigator.pushReplacementNamed(context,ProjectLogin.id) :
         log == 1 ? Navigator.pushReplacementNamed(context,cDashboard.id) :
-        Navigator.pushReplacementNamed(context,pDashboard.id);
+            log == 2 ?
+        Navigator.pushReplacementNamed(context,pDashboard.id) :
+            Navigator.pushReplacementNamed(context,sDashboard.id);
   }
   @override
   Widget build(BuildContext context) {
