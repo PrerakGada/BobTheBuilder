@@ -32,60 +32,66 @@ class _WorkerState extends State<Worker> {
           ),
           title: Text("Workers"),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: <Widget>[
-              Center(
-                  child: TextButton.icon(
-                      onPressed: () {
-                        DialogWorker.exit(context);
-                      },
-                      icon: Icon(
-                        Icons.add_circle,
-                        size: 26,
-                      ),
-                      label: Text(
-                        "Add",
-                        style: TextStyle(fontSize: 18),
-                      ))),
-              Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: Text(
-                  "Existing Workers",
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+        body: Container(
+          decoration:const BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage("assets/images/truck.jfif"),
+                  fit: BoxFit.cover)),
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: <Widget>[
+                Center(
+                    child: TextButton.icon(
+                        onPressed: () {
+                          DialogWorker.exit(context);
+                        },
+                        icon: Icon(
+                          Icons.add_circle,
+                          size: 26,
+                        ),
+                        label: Text(
+                          "Add",
+                          style: TextStyle(fontSize: 18),
+                        ))),
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    "Existing Workers",
+                    style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),
+                  ),
                 ),
-              ),
-              StreamBuilder<QuerySnapshot>(
-                  stream: _firestore.collection('workers').snapshots(),
-                  builder: (context, snapshot) {
-                    if (!snapshot.hasData) {
-                      return const Center(
-                        child: CircularProgressIndicator(
-                          backgroundColor: Colors.lightBlueAccent,
+                StreamBuilder<QuerySnapshot>(
+                    stream: _firestore.collection('workers').snapshots(),
+                    builder: (context, snapshot) {
+                      if (!snapshot.hasData) {
+                        return const Center(
+                          child: CircularProgressIndicator(
+                            backgroundColor: Colors.lightBlueAccent,
+                          ),
+                        );
+                      }
+                      final contractors = snapshot.data!.docs;
+                      List<WorkerCard> contractorCards = [];
+                      for (var contractor in contractors) {
+                        final name = contractor.get('name');
+
+                        final contractorCard = WorkerCard(
+                          name: name,
+                        );
+
+                        contractorCards.add(contractorCard);
+                      }
+                      return SizedBox(
+                        height: 600,
+                        child: ListView(
+                          children: contractorCards,
                         ),
                       );
-                    }
-                    final contractors = snapshot.data!.docs;
-                    List<WorkerCard> contractorCards = [];
-                    for (var contractor in contractors) {
-                      final name = contractor.get('name');
-
-                      final contractorCard = WorkerCard(
-                        name: name,
-                      );
-
-                      contractorCards.add(contractorCard);
-                    }
-                    return SizedBox(
-                      height: 600,
-                      child: ListView(
-                        children: contractorCards,
-                      ),
-                    );
-                  }),
-            ],
+                    }),
+              ],
+            ),
           ),
         ),
       ),

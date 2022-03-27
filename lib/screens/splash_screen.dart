@@ -2,9 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:hexcolor/hexcolor.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/Modules/details.dart';
 import 'package:spike_codeshastra/screens/project_login.dart';
 import 'dart:async';
+import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
+import 'package:spike_codeshastra/screens/Contractor/c_dashboard.dart';
+
 
 import 'package:spike_codeshastra/screens/select_login.dart';
 
@@ -32,8 +36,14 @@ class _LoadingState extends State<Loading> {
     return Timer(duration, route);
   }
 
-  route() {
-    Navigator.pushReplacementNamed(context,ProjectLogin.id);
+  route() async {
+    final SharedPreferences sharedPreferences =
+        await SharedPreferences.getInstance();
+    int? log = sharedPreferences.getInt('Login_status') ?? 0;
+    log == 0 ?
+    Navigator.pushReplacementNamed(context,ProjectLogin.id) :
+        log == 1 ? Navigator.pushReplacementNamed(context,cDashboard.id) :
+        Navigator.pushReplacementNamed(context,pDashboard.id);
   }
   @override
   Widget build(BuildContext context) {

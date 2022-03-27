@@ -18,6 +18,8 @@ class _ContractorState extends State<Contractor> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(

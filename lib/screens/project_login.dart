@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/p_dashboard.dart';
@@ -132,10 +133,16 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                   role=doc.get('role');
                                   if(role=='owner')
                                   {
+                                    final SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+                                    sharedPreferences.setInt('Login_status', 2);
                                     Navigator.pushReplacementNamed(context, pDashboard.id);
                                   }
                                   else if(role=='contractor')
                                   {
+                                    final SharedPreferences sharedPreferences =
+                                    await SharedPreferences.getInstance();
+                                    sharedPreferences.setInt('Login_status', 1);
                                     Navigator.pushReplacementNamed(context, cDashboard.id);
                                   }
 

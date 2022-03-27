@@ -18,6 +18,8 @@ class _ProjectsState extends State<Projects> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(
@@ -106,6 +108,7 @@ class ProjectCard extends StatelessWidget {
     return SizedBox(
       height: 100,
       child: Card(
+        color: Colors.white,
         elevation: 10,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

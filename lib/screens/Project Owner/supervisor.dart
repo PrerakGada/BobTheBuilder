@@ -19,6 +19,8 @@ class _SuperVisorState extends State<SuperVisor> {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+          scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(

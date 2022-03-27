@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 
 import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/contractor.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/projects.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/supervisor.dart';
@@ -111,7 +112,11 @@ class _pDashboardState extends State<pDashboard> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 UserAccountsDrawerHeader(
-                  accountName: Text("Shubh Zatakia"),
+                  accountName: Text("Shubh Zatakia",
+                    style: TextStyle(
+                        fontSize: 16
+                    ),
+                  ),
                   accountEmail: Text("shubhzatakia111@gmail.com"),
                   currentAccountPicture: CircleAvatar(
                     backgroundColor: Colors.orange,
@@ -124,10 +129,15 @@ class _pDashboardState extends State<pDashboard> {
                 ListTile(
                   leading: Image(
                     image: AssetImage(
-                      'assets/images/Logo.jpeg',
+                      'assets/images/projects.png',
+                    ),
+                    height: 40,
+                  ),
+                  title: Text("Projects",
+                    style: TextStyle(
+                        fontSize: 16
                     ),
                   ),
-                  title: Text("Projects"),
                   onTap: () {
                     // print("shubh");
                     Navigator.of(context).push(
@@ -135,35 +145,54 @@ class _pDashboardState extends State<pDashboard> {
                     );
                   },
                 ),
+                SizedBox(height: 10,),
                 ListTile(
-                  leading: Icon(Icons.settings),
-                  title: Text("Contractor"),
+                  leading: Image(
+                    image: AssetImage(
+                      'assets/images/contractor.png',
+                    ),
+                    height: 40,
+                  ),
+                  title: Text("Contractor",
+                    style: TextStyle(
+                        fontSize: 16
+                    ),
+                  ),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => Contractor()),
                     );
                   },
                 ),
+                SizedBox(height: 10,),
                 ListTile(
-                  leading: Icon(Icons.contacts),
-                  title: Text("Supervisor"),
+                  leading: Image(
+                    image: AssetImage(
+                      'assets/images/super.png',
+                    ),
+                    height: 40,
+                  ),
+                  title: Text("Supervisor",
+                    style: TextStyle(
+                        fontSize: 16
+                    ),),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => SuperVisor()),
                     );
                   },
                 ),
-                ListTile(
-                  leading: Icon(Icons.contacts),
-                  title: Text("Task"),
-                  onTap: () {
-                    Navigator.pop(context);
-                  },
-                ),
+                SizedBox(height: 10,),
                 ListTile(
                     leading: Icon(Icons.logout),
-                    title: Text("Logout"),
-                    onTap: () {
+                    title: Text("Logout",
+                      style: TextStyle(
+                          fontSize: 16
+                      ),),
+                    onTap: () async {
+                      final SharedPreferences sharedPreferences =
+                          await SharedPreferences.getInstance();
+                      sharedPreferences.setInt('Login_status', 0);
                       Navigator.pushReplacementNamed(context, ProjectLogin.id);
                     }),
               ],
