@@ -2,6 +2,7 @@
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/Project Owner/projects.dart';
 //import 'dart:async';
@@ -217,6 +218,12 @@ class _pDashboardState extends State<pDashboard> {
                       final SharedPreferences sharedPreferences =
                       await SharedPreferences.getInstance();
                       sharedPreferences.setInt('Login_status', 0);
+
+                      Fluttertoast.showToast(
+                        msg: "Logged Out Successfully",
+                        toastLength: Toast.LENGTH_SHORT,
+                      );
+
                       Navigator.pushReplacementNamed(context, ProjectLogin.id);
                     }),
               ],

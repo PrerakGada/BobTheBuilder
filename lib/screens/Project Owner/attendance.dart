@@ -16,9 +16,8 @@ class _AttendanceState extends State<Attendance> {
           scaffoldBackgroundColor: const Color.fromRGBO(230, 255, 255, 1)),
       home:Scaffold(
         body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+          padding: const EdgeInsets.all(8.0),
+          child: ListView(
             children: <Widget>[
               SizedBox(
                 height: 120,

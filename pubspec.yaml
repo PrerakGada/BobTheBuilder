@@ -46,6 +46,7 @@ dependencies:
   shared_preferences: ^2.0.7
   google_maps_flutter: ^2.0.6
   readmore: ^2.1.0
+  image_picker: ^0.8.4
 
 
 dev_dependencies:

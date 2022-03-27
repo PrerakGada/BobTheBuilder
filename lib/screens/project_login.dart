@@ -3,6 +3,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 //import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/signup.dart';
@@ -137,6 +138,12 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                     final SharedPreferences sharedPreferences =
                                     await SharedPreferences.getInstance();
                                     sharedPreferences.setInt('Login_status', 2);
+
+                                    Fluttertoast.showToast(
+                                      msg: "Logged In Successfully",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                    );
+
                                     Navigator.pushReplacementNamed(context, pDashboard.id);
                                   }
                                   else if(role=='contractor')
@@ -144,6 +151,12 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                     final SharedPreferences sharedPreferences =
                                     await SharedPreferences.getInstance();
                                     sharedPreferences.setInt('Login_status', 1);
+
+                                    Fluttertoast.showToast(
+                                      msg: "Logged In Successfully",
+                                      toastLength: Toast.LENGTH_SHORT,
+                                    );
+
                                     Navigator.pushReplacementNamed(context, cDashboard.id);
                                   }
                                   else if(role=='supervisor')
@@ -151,6 +164,12 @@ class _ProjectLoginState extends State<ProjectLogin> {
                                       final SharedPreferences sharedPreferences =
                                       await SharedPreferences.getInstance();
                                       sharedPreferences.setInt('Login_status', 3);
+
+                                      Fluttertoast.showToast(
+                                        msg: "Logged In Successfully",
+                                        toastLength: Toast.LENGTH_SHORT,
+                                      );
+
                                       Navigator.pushReplacementNamed(context, sDashboard.id);
                                     }
 

@@ -59,9 +59,9 @@ class _LoadingState extends State<Loading> {
             children: <Widget>[
               Image(
                 image: AssetImage(
-                  'assets/images/Logo.jpeg',
+                  'assets/images/btb.png',
                 ),
-                height: 80,
+                height: 100,
               ),
               Container(height:20),
               Center(
@@ -70,11 +70,12 @@ class _LoadingState extends State<Loading> {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text("Build",style: GoogleFonts.sigmarOne(color: e1.secondarycolor(),fontSize: 50), ),
-                        Text("Constra",style: GoogleFonts.sigmarOne(color: e1.primarycolor(),fontSize:30), ),
+                        Text("Bob",style: GoogleFonts.sigmarOne(color: e1.primarycolor(),fontSize:30), ),
+                        Text("The",style: GoogleFonts.sigmarOne(color: e1.secondarycolor(),fontSize:50), ),
+                        Text("Builder",style: GoogleFonts.sigmarOne(color: e1.primarycolor(),fontSize:30), ),
                       ],
                     ),
-                    Text("Build the bob"),
+                    Text("A construction management app"),
                   ],
                 ),
               ),
