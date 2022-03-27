@@ -3,10 +3,14 @@ import 'package:spike_codeshastra/screens/Project%20Owner/attendance.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/details.dart';
 
 class Tabs extends StatefulWidget {
+  final String name;
 
+  const Tabs({Key? key, required this.name}) : super(key: key);
   @override
   State<Tabs> createState() => _TabsState();
 }
+
+
 
 class _TabsState extends State<Tabs> {
   // This widget is the root of your application.
