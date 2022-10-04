@@ -147,7 +147,7 @@ class WorkerCard extends StatelessWidget {
           trailing: IconButton(
             onPressed: () {
               Navigator.of(context).push(
-                MaterialPageRoute(builder: (context) => Tabs(name: name,)),
+                MaterialPageRoute(builder: (context) => Tabs(name)),
               );
             },
             icon: Icon(Icons.arrow_forward_ios_sharp),

@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:spike_codeshastra/screens/Project Owner/projects.dart';
+
 //import 'dart:async';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:spike_codeshastra/Services/service.dart';
@@ -24,6 +25,7 @@ class pDashboard extends StatefulWidget {
 class _pDashboardState extends State<pDashboard> {
   DataService? d1;
   GoogleMapController? mapController;
+
   // int count = 0;
   void initstate() {
     super.initState();
@@ -69,10 +71,12 @@ class _pDashboardState extends State<pDashboard> {
     controller.animateCamera(CameraUpdate.newCameraPosition(_kLake));
   }*/
 
+  
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+        debugShowCheckedModeBanner: false,
         title: 'OnGoing Sites',
         home: Scaffold(
           // ignore: prefer_const_constructors
@@ -93,17 +97,22 @@ class _pDashboardState extends State<pDashboard> {
                       return SizedBox(
                         height: 0,
                         child: ListView.builder(
-
                           itemCount: snapshot.data?.docs.length,
                           itemBuilder: (context, index) {
                             markers.add(
                               Marker(
+                                icon: BitmapDescriptor.defaultMarkerWithHue(BitmapDescriptor.hueGreen),
                                   infoWindow: InfoWindow(
-                                    title: snapshot.data?.docs[index]['contractor'],
+                                    title: snapshot.data?.docs[index]
+                                        ['contractor'],
                                     snippet: snapshot.data?.docs[index]['name'],
                                   ),
                                   markerId: MarkerId('$index'),
-                                  position: LatLng(double.parse(snapshot.data?.docs[index]['lat']),double.parse(snapshot.data?.docs[index]['long']))),
+                                  position: LatLng(
+                                      double.parse(
+                                          snapshot.data?.docs[index]['lat']),
+                                      double.parse(
+                                          snapshot.data?.docs[index]['long']))),
                             );
                             return Container();
                           },
@@ -116,7 +125,7 @@ class _pDashboardState extends State<pDashboard> {
               Expanded(
                 child: Container(
                   child: GoogleMap(
-                    onMapCreated:_onmapcreated,
+                    onMapCreated: _onmapcreated,
                     initialCameraPosition: _kGooglePlex,
                     markers: markers,
                   ),
@@ -137,10 +146,9 @@ class _pDashboardState extends State<pDashboard> {
               padding: EdgeInsets.zero,
               children: <Widget>[
                 UserAccountsDrawerHeader(
-                  accountName: Text("Shubh Zatakia",
-                    style: TextStyle(
-                        fontSize: 16
-                    ),
+                  accountName: Text(
+                    "Shubh Zatakia",
+                    style: TextStyle(fontSize: 16),
                   ),
                   accountEmail: Text("shubhzatakia111@gmail.com"),
                   currentAccountPicture: CircleAvatar(
@@ -158,10 +166,9 @@ class _pDashboardState extends State<pDashboard> {
                     ),
                     height: 40,
                   ),
-                  title: Text("Projects",
-                    style: TextStyle(
-                        fontSize: 16
-                    ),
+                  title: Text(
+                    "Projects",
+                    style: TextStyle(fontSize: 16),
                   ),
                   onTap: () {
                     // print("shubh");
@@ -170,7 +177,9 @@ class _pDashboardState extends State<pDashboard> {
                     );
                   },
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 ListTile(
                   leading: Image(
                     image: AssetImage(
@@ -178,10 +187,9 @@ class _pDashboardState extends State<pDashboard> {
                     ),
                     height: 40,
                   ),
-                  title: Text("Contractor",
-                    style: TextStyle(
-                        fontSize: 16
-                    ),
+                  title: Text(
+                    "Contractor",
+                    style: TextStyle(fontSize: 16),
                   ),
                   onTap: () {
                     Navigator.of(context).push(
@@ -189,7 +197,9 @@ class _pDashboardState extends State<pDashboard> {
                     );
                   },
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 ListTile(
                   leading: Image(
                     image: AssetImage(
@@ -197,26 +207,28 @@ class _pDashboardState extends State<pDashboard> {
                     ),
                     height: 40,
                   ),
-                  title: Text("Supervisor",
-                    style: TextStyle(
-                        fontSize: 16
-                    ),),
+                  title: Text(
+                    "Supervisor",
+                    style: TextStyle(fontSize: 16),
+                  ),
                   onTap: () {
                     Navigator.of(context).push(
                       MaterialPageRoute(builder: (context) => SuperVisor()),
                     );
                   },
                 ),
-                SizedBox(height: 10,),
+                SizedBox(
+                  height: 10,
+                ),
                 ListTile(
                     leading: Icon(Icons.logout),
-                    title: Text("Logout",
-                      style: TextStyle(
-                          fontSize: 16
-                      ),),
+                    title: Text(
+                      "Logout",
+                      style: TextStyle(fontSize: 16),
+                    ),
                     onTap: () async {
                       final SharedPreferences sharedPreferences =
-                      await SharedPreferences.getInstance();
+                          await SharedPreferences.getInstance();
                       sharedPreferences.setInt('Login_status', 0);
 
                       Fluttertoast.showToast(

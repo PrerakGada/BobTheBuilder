@@ -50,5 +50,7 @@
       <string>Upload image from camera for screen background</string>
       <key>NSMicrophoneUsageDescription</key>
       <string>Post videos to profile</string>
+	<key>CADisableMinimumFrameDurationOnPhone</key>
+	<true/>
 </dict>
 </plist>

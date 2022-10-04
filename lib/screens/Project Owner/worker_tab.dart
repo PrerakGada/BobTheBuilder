@@ -1,11 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/attendance.dart';
 import 'package:spike_codeshastra/screens/Project%20Owner/details.dart';
+late final String n;
 
 class Tabs extends StatefulWidget {
-  final String name;
+  Tabs(String name){
+    n = name;
+  }
 
-  const Tabs({Key? key, required this.name}) : super(key: key);
+
+
+
   @override
   State<Tabs> createState() => _TabsState();
 }
@@ -52,7 +57,7 @@ class HomePage extends StatelessWidget {
         ),
         body: TabBarView(
           children: [
-            Attendance(),
+            Attendance(n),
             Details(),
           ],
         ),

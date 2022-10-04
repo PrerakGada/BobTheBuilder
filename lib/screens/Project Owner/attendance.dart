@@ -2,11 +2,14 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 
 final _firestore = FirebaseFirestore.instance;
+late final String name;
 
 class Attendance extends StatefulWidget {
-  const Attendance({
-    Key? key,
-  }) : super(key: key);
+  Attendance(String n){
+    name = n;
+  }
+
+
 
   @override
   State<Attendance> createState() => _AttendanceState();
@@ -46,12 +49,15 @@ class _AttendanceState extends State<Attendance> {
                 contractorCards.add(contractorCard);
                 contractorCards.add(contractorCard);
               }
-              return Padding(
-                padding: const EdgeInsets.all(8.0),
-                child: ListView(
-                  children: <Widget>[
-                    AttendanceCard(),
-                  ],
+              return SizedBox(
+                height: 600,
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: ListView(
+                    children: <Widget>[
+                      AttendanceCard(),
+                    ],
+                  ),
                 ),
               );
             }),
